@@ -1,0 +1,18 @@
+{
+  "api_key": "78c0730a9c1c200ecddadf965c1a357483b06ca4",
+  "tier": "paid",
+  "features": {
+    "api_access": true,
+    "create_checks": true,
+    "browsable_api": true,
+    "heartbeat_checks": true,
+    "webhook_checks": true
+  },
+  "rate_limits": {
+    "api_calls_per_hour": 500,
+    "api_calls_per_minute": 60,
+    "heartbeat_requests_per_minute": 2,
+    "heartbeat_bonus_per_15min": 6
+  },
+  "notes": "Paid tier account with full API access"
+}

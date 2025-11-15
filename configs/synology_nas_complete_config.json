@@ -1,0 +1,175 @@
+{
+  "device_name": "Synology NAS DS218+",
+  "hostname": "SaadZ",
+  "model": "DS218+",
+  "platform": "apollolake",
+  "dsm_version": "7.1.1-42962 Update 9",
+  "kernel": "4.4.180+",
+  "deployed_date": "2025-11-15T20:00:00Z",
+  "location": "Home - Behind GL-BE9300 Router",
+  "access": {
+    "tailscale": {
+      "enabled": true,
+      "ip": "100.115.78.45",
+      "hostname": "saadz",
+      "full_domain": "saadz.tail75e75.ts.net",
+      "ssh_command": "ssh -i ~/.ssh/synology_nas -p 77 saadmin@100.115.78.45",
+      "ssh_command_local_preferred": "ssh -i ~/.ssh/synology_nas -p 77 saadmin@192.168.50.23",
+      "ssh_port": 77,
+      "ssh_key": "~/.ssh/synology_nas",
+      "services": {
+        "ssh": "100.115.78.45:77",
+        "dsm_http": "100.115.78.45:5000",
+        "dsm_https": "100.115.78.45:5001"
+      },
+      "exit_node": {
+        "allowed": true,
+        "status": "active"
+      },
+      "tags": ["exit", "master", "synology"],
+      "note": "SSH via Tailscale IP may hang - use local IP 192.168.50.23 when on home network"
+    },
+    "local": {
+      "ip": "192.168.50.23",
+      "subnet": "192.168.50.0/24",
+      "ssh_command": "ssh -i ~/.ssh/synology_nas -p 77 saadmin@192.168.50.23",
+      "ssh_port": 77,
+      "dsm_http": "http://192.168.50.23:5000",
+      "dsm_https": "https://192.168.50.23:5001"
+    },
+    "quickconnect": {
+      "enabled": true,
+      "id": "sakbark",
+      "url": "https://sakbark.quickconnect.to",
+      "direct_url": "https://sakbark.quickconnect.com",
+      "dsm_signin": "https://192.168.50.23:5001/#/signin/otp"
+    },
+    "ddns": {
+      "enabled": true,
+      "hostname": "sakbark.synology.me",
+      "url": "https://sakbark.synology.me:5001",
+      "signin": "https://sakbark.synology.me:5001/#/signin/password"
+    }
+  },
+  "credentials": {
+    "username": "saadmin",
+    "password": "fP3OaK!ky0LzQC",
+    "ssh_key_private": "~/.ssh/synology_nas",
+    "ssh_key_public": "~/.ssh/synology_nas.pub",
+    "note": "Admin user with full DSM access"
+  },
+  "hardware": {
+    "cpu": {
+      "model": "Intel Celeron J3355",
+      "cores": 2,
+      "architecture": "x86_64"
+    },
+    "memory": {
+      "total_mb": 9806,
+      "type": "DDR3L"
+    },
+    "storage": {
+      "primary_volume": "/volume7",
+      "total_size": "3.5T",
+      "raid_type": "SHR",
+      "drives": 2
+    },
+    "network": {
+      "interfaces": ["eth0"],
+      "speed": "1 Gbps"
+    }
+  },
+  "monitoring": {
+    "deployed": true,
+    "script_location": "~/scripts/synology_uptime_monitor.sh",
+    "config_script": "~/scripts/configure_heartbeat.sh",
+    "log_file": "/tmp/uptime_monitor.log",
+    "metrics_file": "/tmp/synology_metrics.json",
+    "heartbeat_url": "PENDING_MANUAL_CREATION",
+    "check_name": "Synology NAS SaadZ - Direct Heartbeat",
+    "interval_minutes": 2,
+    "status": "deployed_not_configured",
+    "metrics_collected": [
+      "cpu_usage",
+      "cpu_load",
+      "memory_usage",
+      "disk_usage",
+      "network_traffic",
+      "wan_status",
+      "wan_latency",
+      "dns_status",
+      "tailscale_status",
+      "temperature"
+    ],
+    "current_metrics": {
+      "cpu_usage_percent": 0,
+      "cpu_load_1min": 0.21,
+      "memory_total_mb": 9806,
+      "memory_used_mb": 1145,
+      "memory_percent": 12,
+      "disk_usage_percent": 58,
+      "wan_status": "up",
+      "wan_latency_ms": 144,
+      "public_ip": "140.228.71.7",
+      "temperature_c": 34,
+      "uptime_days": 65
+    }
+  },
+  "synology_dsm_api": {
+    "available": true,
+    "base_url_local": "http://192.168.50.23:5000/webapi",
+    "base_url_https": "https://192.168.50.23:5001/webapi",
+    "base_url_quickconnect": "https://sakbark.quickconnect.to/webapi",
+    "documentation": "https://global.download.synology.com/download/Document/Software/DeveloperGuide/Package/FileStation/All/enu/Synology_File_Station_API_Guide.pdf",
+    "api_info_endpoint": "/webapi/query.cgi?api=SYNO.API.Info&version=1&method=query",
+    "authentication": {
+      "endpoint": "/webapi/auth.cgi",
+      "api": "SYNO.API.Auth",
+      "login_method": "login",
+      "logout_method": "logout",
+      "session_format": "FileStation"
+    },
+    "common_apis": [
+      "SYNO.API.Info",
+      "SYNO.API.Auth",
+      "SYNO.Core.System",
+      "SYNO.Storage.CGI.Storage",
+      "SYNO.FileStation.*",
+      "SYNO.DownloadStation.*"
+    ],
+    "note": "Full API documentation available in DSM UI under Control Panel > Terminal & SNMP > Enable Web API"
+  },
+  "packages_installed": [
+    "Tailscale",
+    "Docker",
+    "File Station",
+    "Download Station",
+    "Synology Photos"
+  ],
+  "network_config": {
+    "gateway": "192.168.50.1",
+    "dns_servers": ["188.172.144.120", "141.0.144.64"],
+    "public_ip": "140.228.71.7",
+    "behind_nat": true,
+    "router": "GL-BE9300 (192.168.50.1)"
+  },
+  "deployment_summary": {
+    "completed_tasks": [
+      "SSH access configured (local and Tailscale)",
+      "Monitoring script created and deployed",
+      "Scripts located at ~/scripts/",
+      "Metrics collection tested and working",
+      "WAN connectivity check adapted for DSM (curl-based)",
+      "Configuration documented and stored in GSM"
+    ],
+    "pending_manual_steps": [
+      "Create heartbeat check in Uptime.com dashboard",
+      "Configure heartbeat URL using ~/scripts/configure_heartbeat.sh",
+      "Setup cron job or DSM Task Scheduler for monitoring",
+      "Add SSH key to authorized_keys for passwordless access",
+      "Enable DSM Web API in Control Panel if needed for automation",
+      "Fix Tailscale SSH connectivity (currently use local IP)"
+    ]
+  },
+  "notes": "Synology NAS deployed with monitoring scripts. SSH via Tailscale IP (100.115.78.45) may hang - prefer local IP (192.168.50.23) when on home network. Monitoring script ready but needs heartbeat URL configuration and cron/task scheduler setup. DSM Web API available for future automation and integration with Calendar GPT."
+}

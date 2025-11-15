@@ -1,0 +1,141 @@
+{
+  "router_name": "GL-MT6000 (Office)",
+  "location": "Office - 89 Shepperton Road, 192.168.8.1",
+  "model": "GL-MT6000",
+  "hostname": "GL-MT6000",
+  "firmware": "OpenWrt 24.10.0-rc2",
+  "kernel": "6.6.63",
+  "deployed_date": "2025-11-15T19:08:00Z",
+  "access": {
+    "tailscale": {
+      "enabled": true,
+      "ip": "100.106.155.108",
+      "hostname": "office-gl-mt6000",
+      "full_domain": "office-gl-mt6000.tail75e75.ts.net",
+      "version": "1.66.4-1 (OpenWrt)",
+      "ssh_command": "ssh -i ~/.ssh/glinet_mt6000 root@100.106.155.108",
+      "ssh_key": "~/.ssh/glinet_mt6000",
+      "services": {
+        "ssh": "100.106.155.108:22 (dropbear)",
+        "http": "100.106.155.108:80 (nginx)",
+        "https": "100.106.155.108:443 (nginx)",
+        "admin_gui": "100.106.155.108:8080 (uhttpd)"
+      },
+      "subnet_router": {
+        "enabled": true,
+        "approved_routes": [
+          "192.168.1.0/24",
+          "192.168.8.0/24",
+          "192.168.23.0/24"
+        ],
+        "status": "approved",
+        "ip_forwarding": true
+      },
+      "exit_node": {
+        "status": "not_allowed"
+      },
+      "latency": {
+        "london": "13.22ms",
+        "paris": "21.20ms",
+        "frankfurt": "29.37ms"
+      },
+      "tags": ["tag:exit", "tag:master"]
+    },
+    "local": {
+      "ip": "192.168.8.1",
+      "subnet": "192.168.8.0/24",
+      "ssh_command": "ssh -i ~/.ssh/glinet_mt6000 root@192.168.8.1",
+      "ssh_key": "~/.ssh/glinet_mt6000",
+      "admin_gui": "http://192.168.8.1"
+    },
+    "ddns": {
+      "hostname": "sp99525.glddns.com",
+      "provider": "GL.iNet DDNS",
+      "enabled": true,
+      "test_url": "http://sp99525.glddns.com"
+    }
+  },
+  "wan": {
+    "multi_wan": true,
+    "wan1": {
+      "name": "5G (GL-X3000)",
+      "protocol": "DHCP",
+      "ip": "192.168.23.23",
+      "gateway": "192.168.23.1",
+      "dns_servers": ["192.168.23.1"],
+      "status": "inactive"
+    },
+    "wan2": {
+      "name": "WiFi Repeater",
+      "protocol": "DHCP",
+      "ip": "192.168.1.37",
+      "gateway": "192.168.1.1",
+      "dns_servers": ["192.168.1.1"],
+      "status": "active"
+    },
+    "public_ip": "82.132.233.195",
+    "wan_type": "Multi-WAN Load Balancing",
+    "connections": ["5G (GL-X3000)", "WiFi Repeater"]
+  },
+  "performance": {
+    "download_mbps": 32,
+    "latency_ms": 7.128,
+    "packet_loss": "0%"
+  },
+  "uptime_monitoring": {
+    "deployed": true,
+    "heartbeat_url": "https://metrics.uptime.com/metrics/heartbeat/3B0J7-9FDC95A785D49153",
+    "check_id": "5552020",
+    "check_name": "Office Router GL-MT6000 - Direct Heartbeat",
+    "status": "operational",
+    "interval_minutes": 2,
+    "last_heartbeat": "2025-11-15T19:08:39Z",
+    "last_status": "HTTP 200",
+    "cron_job": "*/2 * * * * /root/router_uptime_monitor.sh >/dev/null 2>&1",
+    "script_location": "/root/router_uptime_monitor.sh",
+    "log_location": "/tmp/uptime_monitor.log",
+    "metrics_location": "/tmp/router_metrics.json",
+    "metrics_collected": [
+      "cpu_usage",
+      "cpu_load",
+      "memory_usage",
+      "network_traffic",
+      "wan_status",
+      "wan_latency",
+      "packet_loss",
+      "dns_status",
+      "wifi_clients",
+      "temperature",
+      "storage_usage"
+    ],
+    "current_metrics": {
+      "cpu_count": 4,
+      "cpu_usage_percent": 0,
+      "cpu_load_1min": 0.05,
+      "memory_total_mb": 983,
+      "memory_used_mb": 233,
+      "memory_percent": 23,
+      "wan_status": "up",
+      "wan_latency_ms": "7.128",
+      "packet_loss": "0%",
+      "public_ip": "185.81.17.26",
+      "wifi_clients": 6,
+      "temperature_c": 45,
+      "uptime_days": 0
+    }
+  },
+  "credentials": {
+    "username": "root",
+    "password": "Boohoo77!!",
+    "ssh_key_private": "~/.ssh/glinet_mt6000"
+  },
+  "services_verified": {
+    "ssh": true,
+    "http": true,
+    "https": true,
+    "admin_gui": true,
+    "tailscale": true,
+    "monitoring": true
+  },
+  "notes": "Multi-WAN setup: WAN1 (5G) + WAN2 (WiFi Repeater - active). DNS record sync may take up to 10 minutes after IP changes. Monitoring deployed and operational."
+}
