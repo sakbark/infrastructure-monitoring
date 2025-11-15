@@ -1,0 +1,51 @@
+# Sensitive files
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+*_rsa
+*_dsa
+*_ecdsa
+*_ed25519
+*.ppk
+
+# Environment files
+.env
+.env.*
+secrets.json
+credentials.json
+
+# Logs
+*.log
+*.log.*
+/tmp/
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# Backups
+*.bak
+*.backup
+*.old
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+venv/
+.venv/
+
+# Node
+node_modules/
+package-lock.json
